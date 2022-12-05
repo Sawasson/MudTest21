@@ -1,0 +1,46 @@
+﻿@page "/"
+
+<EditForm Model="product" OnSubmit="Save">
+    <ARSelect ToStringFunc="x=>x.Name" @bind-Value="@product.CategoryId" Label="Packing" Variant="Variant.Outlined">
+        @foreach (var category in categories)
+        {
+            <ARSelectItem Value="@category.Id">@category.Name</ARSelectItem>
+        }
+    </ARSelect>
+    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled">Save</MudButton> 
+</EditForm>
+
+<p>Bind Category ID:@product.CategoryId</p>
+
+
+@code {
+    Product product = new();
+    List<Category> categories = new List<Category>();
+
+    class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int CategoryId { get; set; }
+    }
+
+    class Category
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    protected override void OnInitialized()
+    {
+        categories.Add(new Category() { Id = 1, Name = "AAA" });
+        categories.Add(new Category() { Id = 2, Name = "BBB" });
+        categories.Add(new Category() { Id = 3, Name = "CCC" });
+
+    }
+
+    void Save()
+    {
+        
+    }
+
+}

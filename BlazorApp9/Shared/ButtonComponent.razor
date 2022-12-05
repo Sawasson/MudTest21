@@ -1,0 +1,12 @@
+﻿<button class="btn btn-success" @onclick="(args)=>onclose(args)">Button</button>
+
+@code {
+    [Parameter]
+    public EventCallback<MouseEventArgs> Close { get; set; }
+
+    public async Task onclose(MouseEventArgs args)
+    {
+        await Close.InvokeAsync(args);
+    }
+
+}
