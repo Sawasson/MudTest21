@@ -1,5 +1,8 @@
 ﻿@page "/"
 
+
+<CustomLabel>Bind Category ID:@product.CategoryId</CustomLabel>
+
 <EditForm Model="product" OnSubmit="Save">
     <ARSelect ToStringFunc="x=>x.Name" @bind-Value="@product.Category" Label="Packing" Variant="Variant.Outlined">
         @foreach (var category in categories)
@@ -10,7 +13,7 @@
     <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled">Save</MudButton> 
 </EditForm>
 
-<p>Bind Category ID:@product.CategoryId</p>
+
 
 
 @code {
