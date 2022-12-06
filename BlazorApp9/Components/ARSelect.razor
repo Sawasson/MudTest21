@@ -1,32 +1,16 @@
 ﻿@typeparam TValue
+@using System.Linq.Expressions
 
-<MudSelect T=TValue ToStringFunc="@this.ToStringFunc" Label="@this.Label" Variant="@this.Variant">
+<MudSelect T=TValue Value=@this.Value ValueChanged=this.ValueChanged ValueExpression=this.ValueExpression Label="Select" HelperText="Choose">
     @ChildContent
 </MudSelect>
 
-@code{
-    [Parameter]
-    public Func<TValue, string> ToStringFunc { get; set; }
-
-    [Parameter] public RenderFragment ChildContent { get; set; }
-
-
-    [Parameter]
-    public TValue? Value { get; set; }
-    [Parameter] public string Label { get; set; }
-
-    [Parameter] public bool Disabled { get; set; }
-
-    [Parameter] public Variant Variant { get; set; } = Variant.Text;
+@code {
+    [Parameter] public TValue? Value { get; set; }
 
     [Parameter] public EventCallback<TValue> ValueChanged { get; set; }
 
     [Parameter] public Expression<Func<TValue>>? ValueExpression { get; set; }
 
-    [Parameter] public bool ValidationEnabled { get; set; }
-
-    [Parameter] public string Class { get; set; }
-
-
-    [Parameter] public Expression<Func<TValue>>? For { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
 }

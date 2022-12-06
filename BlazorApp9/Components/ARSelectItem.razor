@@ -1,42 +1,14 @@
 ﻿@typeparam TValue
 
-<MudSelectItem T=TValue Value="@this.Value">
+
+@using System.Linq.Expressions
+
+<MudSelectItem T=TValue Value="@this.Value" ValueChanged=this.ValueChanged>
     @ChildContent
 </MudSelectItem>
 
-
 @code{
-    [Parameter] public TValue Value { get; set; }
-    [Parameter] public RenderFragment ChildContent { get; set; }
 
-    //[Inject]
-    //public ILocalizeComponentBinder Localizer { get; set; }
-
-
-
-
-
-
-
-
-
-    //public override void AfterRender(RenderTreeBuilder builder)
-    //{
-    //    builder.AddAttribute(20, "Value", Value);
-
-    //}
-
-    //public override void InitRender(RenderTreeBuilder builder)
-    //{
-    //    builder.OpenComponent<MudSelectItem<TValue>>(0);
-    //}
-
-    //protected override void BuildRenderTree(RenderTreeBuilder builder)
-    //{
-    //    InitRender(builder);
-
-    //    AfterRender(builder);
-
-    //    builder.CloseComponent();
-    //}
+    [Parameter] public string T { get; set; } = "string";
 }
+

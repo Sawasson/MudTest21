@@ -1,16 +1,14 @@
 ﻿@page "/"
 
 
-<CustomLabel>Bind Category ID:@product.CategoryId</CustomLabel>
-
-<EditForm Model="product" OnSubmit="Save">
-    <ARSelect ToStringFunc="x=>x.Name" @bind-Value="@product.Category" Label="Packing" Variant="Variant.Outlined">
-        @foreach (var category in categories)
+<EditForm Model="product" OnValidSubmit="OnValidSubmit">
+    <ARSelect @bind-Value=product.CategoryId>
+        @foreach (var item in categories)
         {
-            <ARSelectItem Value="@category.Id">@category.Name</ARSelectItem>
+            <ARSelectItem T="int" Value="item.Id">@item.Name</ARSelectItem>
         }
     </ARSelect>
-    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled">Save</MudButton> 
+    <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled">Save</MudButton>
 </EditForm>
 
 
@@ -42,7 +40,18 @@
 
     }
 
+    private async Task OnValidSubmit()
+    {
+
+    }
+
     void Save()
+    {
+        
+    }
+
+
+    void Save2()
     {
         
     }
